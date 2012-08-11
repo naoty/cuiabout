@@ -1,6 +1,6 @@
 # Cuiabout
 
-TODO: Write a gem description
+CLI for cui-about.me
 
 ## Installation
 
