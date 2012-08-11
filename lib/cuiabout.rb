@@ -8,14 +8,20 @@ module Cuiabout
     class << self
 
       def run *args
-        command = args.shift || 'help'
+        command = args.shift || 'usage'
         send(command, *args)
       end
 
-      def help *args
-        system "curl #{ROOT_PATH}"
+      def usage *args
+        puts %(
+Usage: cuiabout ACTION
+
+  cuiabout [username]       # Prints user's profile
+  cuiabout show [username]  # Prints user's profile
+        )
       end
-      alias :me :help
+      alias :help :usage
+      alias :me :usage
 
       def show *args
         abort "ERROR: Please specify hacker's name" if args.empty?
