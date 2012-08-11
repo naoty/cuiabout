@@ -18,13 +18,18 @@ Usage: cuiabout ACTION
 
   cuiabout [username]       # Prints user's profile
   cuiabout show [username]  # Prints user's profile
+  cuiabout list             # Prints all user names
         )
       end
       alias :help :usage
       alias :me :usage
 
+      def list *args
+        system "curl #{ROOT_PATH}/users"
+      end
+
       def show *args
-        abort "ERROR: Please specify hacker's name" if args.empty?
+        abort "ERROR: Please specify user's name" if args.empty?
 
         name = args.shift
         system "curl #{ROOT_PATH}/#{name}"
@@ -37,6 +42,8 @@ Usage: cuiabout ACTION
           abort 'ERROR: Unknown command'
         end
       end
+
+      private
 
       def listed? name
         names = `curl --silent #{ROOT_PATH}/users`
