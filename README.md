@@ -1,6 +1,6 @@
 # Cuiabout
 
-CLI for cui-about.me
+CLI for cui-about.me (http://github.com/naoty/cui-aboutme)
 
 ## Installation
 
@@ -18,7 +18,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Print how to use this gem.
+
+    $ cuiabout help
+
+    Usage: cuiabout ACTION
+
+      cuiabout [username]       # Prints user's profile
+      cuiabout show [username]  # Prints user's profile
+      cuiabout list             # Prints all user names
+
+Print all user names.
+
+    $ cuiabout list
+    naoty
+    soplana
+
+Print a specific user's profile.
+
+    $ cuiabout naoty
 
 ## Contributing
 
