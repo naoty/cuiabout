@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/cuiabout'
-Cuiabout::CLI.run(ARGV)
+Cuiabout::CLI.run(*ARGV)
