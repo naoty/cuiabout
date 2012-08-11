@@ -13,7 +13,13 @@ module Cuiabout
     def self.help *args
       system "curl #{ROOT_PATH}"
     end
-    alias :me, :help
+
+    def self.show *args
+      abort "Please specify hacker's name." if args.empty?
+
+      name = args.shift
+      system "curl #{ROOT_PATH}/#{name}"
+    end
 
   end
 end
