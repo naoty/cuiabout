@@ -5,20 +5,38 @@ module Cuiabout
 
     ROOT_PATH = 'http://cui-about.me'
 
-    def self.run *args
-      command = args.shift || 'help'
-      send(command, *args)
-    end
+    class << self
 
-    def self.help *args
-      system "curl #{ROOT_PATH}"
-    end
+      def run *args
+        command = args.shift || 'help'
+        send(command, *args)
+      end
 
-    def self.show *args
-      abort "Please specify hacker's name." if args.empty?
+      def help *args
+        system "curl #{ROOT_PATH}"
+      end
+      alias :me :help
 
-      name = args.shift
-      system "curl #{ROOT_PATH}/#{name}"
+      def show *args
+        abort "ERROR: Please specify hacker's name" if args.empty?
+
+        name = args.shift
+        system "curl #{ROOT_PATH}/#{name}"
+      end
+
+      def method_missing method_or_name, *args
+        if listed? method_or_name
+          show method_or_name
+        else
+          abort 'ERROR: Unknown command'
+        end
+      end
+
+      def listed? name
+        names = `curl --silent #{ROOT_PATH}/users`
+        names.split($/).include?(name.to_s)
+      end
+
     end
 
   end
