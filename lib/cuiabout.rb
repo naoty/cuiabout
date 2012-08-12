@@ -35,6 +35,18 @@ Usage: cuiabout ACTION
         system "curl #{ROOT_PATH}/#{name}"
       end
 
+      def signup *args
+        abort 'ERROR: Please specify your name' if args.empty?
+
+        name = args.shift
+        password = ask_password
+        data = "name=#{name}&password=#{password}"
+        args.each do |arg|
+          data += "&#{arg}"
+        end
+        system "curl -X POST -d '#{data}' #{ROOT_PATH}/signup"
+      end
+
       def method_missing method_or_name, *args
         if listed? method_or_name
           show method_or_name
@@ -48,6 +60,15 @@ Usage: cuiabout ACTION
       def listed? name
         names = `curl --silent #{ROOT_PATH}/users`
         names.split($/).include?(name.to_s)
+      end
+
+      def ask_password
+        print 'password: '
+        system 'stty -echo'
+        password = $stdin.gets.chop
+        system 'stty echo'
+        print "\n"
+        return password
       end
 
     end
