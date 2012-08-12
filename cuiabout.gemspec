@@ -4,7 +4,7 @@ require File.expand_path('../lib/cuiabout/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["naoty"]
   gem.email         = ["naoty.k@gmail.com"]
-  gem.description   = %q{This gem helps to download hackers' profiles, and upload your profile.}
+  gem.description   = %q{CLI for cui-about.me (http://cui-about.me)}
   gem.summary       = %q{CLI for cui-about.me}
   gem.homepage      = "http://github.com/naoty/cuiabout"
 

@@ -6,37 +6,65 @@ CLI for cui-about.me (http://github.com/naoty/cui-aboutme)
 
 Add this line to your application's Gemfile:
 
-    gem 'cuiabout'
+```ruby
+gem 'cuiabout'
+```
 
 And then execute:
 
-    $ bundle
+```sh
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install cuiabout
+```sh
+$ gem install cuiabout
+```
 
 ## Usage
 
 Print how to use this gem.
 
-    $ cuiabout help
+```sh
+$ cuiabout help
 
-    Usage: cuiabout ACTION
+Usage: cuiabout ACTION
 
-      cuiabout [username]       # Prints user's profile
-      cuiabout show [username]  # Prints user's profile
-      cuiabout list             # Prints all user names
+  cuiabout [username]       # Prints user's profile
+  cuiabout show [username]  # Prints user's profile
+  cuiabout list             # Prints all user names
+```
 
 Print all user names.
 
-    $ cuiabout list
-    naoty
-    soplana
+```sh
+$ cuiabout list
+naoty
+soplana
+```
 
 Print a specific user's profile.
 
-    $ cuiabout naoty
+```sh
+$ cuiabout naoty
+```
+
+Signup with your name, password, and any other information.
+
+```sh
+$ cuiabout signup naoty email=naoty.k@gmail.com github=http://github.com/naoty
+password:
+Success!
+```
+
+Update your profile.
+
+```sh
+$ cuiabout update naoty blog=http://naoty.hatenablog.com location=Tokyo
+password:
+Success!
+```
 
 ## Contributing
 
